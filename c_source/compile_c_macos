@@ -1,0 +1,8 @@
+#!/bin/bash
+# To run under Linux, use:
+# chmod 755 compile_c
+gcc -c -fpic -Dunix myeunumber.c -lm
+gcc -shared -Dunix -o libeunumber.dylib myeunumber.o -lm
+gcc -L$PWD -Wall -Dunix -o test eunumer_c.c -leunumber -lm
+# export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
+./test

@@ -1,0 +1,8 @@
+#!/bin/bash
+# To run under Linux, use:
+# chmod 755 compile_c
+gcc -c -fpic -DBITS32 myeunumber.c -lm
+gcc -shared -DBITS32 -o libeunumber.so myeunumber.o -lm
+gcc -L$PWD -Wall -DBITS32 -o test eunumer_c.c -leunumber -lm
+# export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
+./test
